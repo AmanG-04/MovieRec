@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model WishlistItem {
+  id           String   @id @default(cuid())
+  movieId      Int      @unique
+  title        String
+  posterPath   String?
+  releaseDate  String?
+  voteAverage  Float?
+  addedAt      DateTime @default(now())
+}
